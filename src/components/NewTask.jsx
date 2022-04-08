@@ -1,6 +1,4 @@
-import React from 'react';
-
-const NewTask = ({ status }) => {
+const NewTask = ({ status, projects, setProjects }) => {
   return (
     <>
       <div>
@@ -30,11 +28,16 @@ const NewTask = ({ status }) => {
               type="text"
               className="form-control"
               id="status"
-              placeholder="Enter status"
-              value={status}
+              placeholder={status}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            onClick={() => {
+              console.log(projects);
+            }}
+            type="submit"
+            className="btn btn-primary"
+          >
             Submit
           </button>
         </form>

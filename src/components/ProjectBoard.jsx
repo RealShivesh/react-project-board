@@ -33,7 +33,13 @@ const ProjectBoard = () => {
           >
             Add new
           </button>
-          {newProject.notStarted && <NewTask status="not started" />}
+          {newProject.notStarted && (
+            <NewTask
+              projects={projects}
+              setProjects={setProjects}
+              status="not started"
+            />
+          )}
         </div>
       </div>
       <div className="column">
@@ -50,7 +56,13 @@ const ProjectBoard = () => {
           >
             Add new
           </button>
-          {newProject.inProgress && <NewTask status="in progress" />}
+          {newProject.inProgress && (
+            <NewTask
+              projects={projects}
+              setProjects={setProjects}
+              status="in progress"
+            />
+          )}
         </div>
       </div>
       <div className="column">
@@ -68,7 +80,13 @@ const ProjectBoard = () => {
           >
             Add new
           </button>
-          {newProject.completed && <NewTask status="completed" />}
+          {newProject.completed && (
+            <NewTask
+              projects={projects}
+              setProjects={setProjects}
+              status="completed"
+            />
+          )}
         </div>
       </div>
     </div>
