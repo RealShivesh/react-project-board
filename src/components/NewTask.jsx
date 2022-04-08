@@ -1,4 +1,24 @@
+import { useEffect, useState } from 'react';
+
 const NewTask = ({ status, projects, setProjects }) => {
+  const [project, setProject] = useState({
+    title: '',
+    description: '',
+    status: status,
+  });
+
+  //add the project to projects array
+  const addProject = (e) => {
+    e.preventDefault();
+    setProjects([...projects, project]);
+    setProject({
+      title: '',
+      description: '',
+      status: status,
+    });
+    console.log(projects);
+  };
+
   return (
     <>
       <div>
@@ -8,36 +28,37 @@ const NewTask = ({ status, projects, setProjects }) => {
             <label htmlFor="title">Title</label>
             <input
               type="text"
-              className="form-control"
               id="title"
               placeholder="Enter title"
+              value={project.title}
+              onChange={(e) =>
+                setProject({ ...project, title: e.target.value })
+              }
             />
           </div>
           <div className="form-group">
             <label htmlFor="description">Description</label>
             <textarea
-              className="form-control"
               id="description"
               rows="3"
               placeholder="Enter description"
-            ></textarea>
+              value={project.description}
+              onChange={(e) =>
+                setProject({ ...project, description: e.target.value })
+              }
+            />
           </div>
           <div className="form-group">
             <label htmlFor="status">Status</label>
             <input
               type="text"
+              readOnly
               className="form-control"
               id="status"
-              placeholder={status}
+              value={project.status}
             />
           </div>
-          <button
-            onClick={() => {
-              console.log(projects);
-            }}
-            type="submit"
-            className="btn btn-primary"
-          >
+          <button type="submit" onClick={() => addProject()}>
             Submit
           </button>
         </form>

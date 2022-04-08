@@ -9,7 +9,7 @@ const ProjectBoard = () => {
     inProgress: false,
     completed: false,
   });
-  const [project, setProject] = useState({});
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -68,7 +68,6 @@ const ProjectBoard = () => {
       <div className="column">
         <h2>Completed</h2>
         <div className="card-stack">
-          <ProjectCard />
           <ProjectCard />
           <button
             onClick={() =>
