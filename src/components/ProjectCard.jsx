@@ -5,12 +5,20 @@ const ProjectCard = () => {
     <div className="card">
       <h5 className="card-title">Card title</h5>
       <p className="card-text">
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
+        Add icons to the buttons
+        <br />
+        Fetch the card details from localStorage
+        <br />
+        The cards should be mapped
+        <br />
+        Cards will have these fields: 1. Title 2. Status 3. Description 4. Due
+        date
       </p>
-      <a href="#" className="btn btn-primary">
-        Go somewhere
-      </a>
+      <div>
+        <button>Started</button>
+        <button>Completed</button>
+        <button>Delete</button>
+      </div>
     </div>
   );
 };
