@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewTask = (newProject) => {
+const NewTask = ({ status }) => {
   return (
     <>
       <div>
@@ -24,12 +24,15 @@ const NewTask = (newProject) => {
               placeholder="Enter description"
             ></textarea>
           </div>
-          <div>
-            <select className="form-control" id="status">
-              <option>Not Started</option>
-              <option>In progress</option>
-              <option>Completed</option>
-            </select>
+          <div className="form-group">
+            <label htmlFor="status">Status</label>
+            <input
+              type="text"
+              className="form-control"
+              id="status"
+              placeholder="Enter status"
+              value={status}
+            />
           </div>
           <button type="submit" className="btn btn-primary">
             Submit
