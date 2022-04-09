@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react';
 
 const NewTask = ({ status, projects, setProjects }) => {
-  const [project, setProject] = useState({
-    title: '',
-    description: '',
-    status: status,
-  });
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
-  //add the project to projects array
-  const addProject = (e) => {
+  const inputTitleHandler = (e) => {
+    setTitle(e.target.value);
+    //console.log(title);
+  };
+
+  const inputDescriptionHandler = (e) => {
+    setDescription(e.target.value);
+    //console.log(description);
+  };
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    setProjects([...projects, project]);
-    setProject({
-      title: '',
-      description: '',
-      status: status,
-    });
+    setProjects([...projects, { title, description, status }]);
+    localStorage.setItem('projects', JSON.stringify(projects));
     console.log(projects);
+    setTitle('');
+    setDescription('');
   };
 
   return (
@@ -30,10 +34,8 @@ const NewTask = ({ status, projects, setProjects }) => {
               type="text"
               id="title"
               placeholder="Enter title"
-              value={project.title}
-              onChange={(e) =>
-                setProject({ ...project, title: e.target.value })
-              }
+              value={title}
+              onChange={inputTitleHandler}
             />
           </div>
           <div className="form-group">
@@ -42,10 +44,8 @@ const NewTask = ({ status, projects, setProjects }) => {
               id="description"
               rows="3"
               placeholder="Enter description"
-              value={project.description}
-              onChange={(e) =>
-                setProject({ ...project, description: e.target.value })
-              }
+              value={description}
+              onChange={inputDescriptionHandler}
             />
           </div>
           <div className="form-group">
@@ -55,10 +55,10 @@ const NewTask = ({ status, projects, setProjects }) => {
               readOnly
               className="form-control"
               id="status"
-              value={project.status}
+              value={status}
             />
           </div>
-          <button type="submit" onClick={() => addProject()}>
+          <button type="submit" onClick={submitHandler}>
             Submit
           </button>
         </form>

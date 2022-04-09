@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import NewTask from './NewTask';
 import ProjectCard from './ProjectCard';
 
@@ -10,13 +10,18 @@ const ProjectBoard = () => {
     completed: false,
   });
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  useEffect(() => {
+    getLocalProjects();
+  }, []);
 
-  console.log(localStorage.getItem('projects'));
-  if (localStorage.getItem('projects')) {
-    setProjects(JSON.parse(localStorage.getItem('projects')));
-  }
+  const getLocalProjects = () => {
+    if (localStorage.getItem('projects') === null) {
+      localStorage.setItem('projects', JSON.stringify(projects));
+    } else {
+      setProjects(JSON.parse(localStorage.getItem('projects')));
+    }
+  };
+
   return (
     <div className="project-board">
       <div className="column">
