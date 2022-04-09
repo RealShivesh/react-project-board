@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const NewTask = ({ status, projects, setProjects }) => {
   const [title, setTitle] = useState('');
@@ -16,12 +16,15 @@ const NewTask = ({ status, projects, setProjects }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setProjects([...projects, { title, description, status }]);
-    localStorage.setItem('projects', JSON.stringify(projects));
-    console.log(projects);
+    setProjects([
+      ...projects,
+      { title, description, status, id: Math.random() },
+    ]);
     setTitle('');
     setDescription('');
   };
+  localStorage.setItem('projects', JSON.stringify(projects));
+  //console.log(projects);
 
   return (
     <>

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const ProjectCard = () => {
+const ProjectCard = ({ project }) => {
   return (
     <div className="card">
-      <h5 className="card-title">Card title</h5>
-      <p className="card-text">Add icons to the buttons</p>
+      <h5 className="card-title">{project.title}</h5>
+      <p className="card-text">{project.description}</p>
       <div>
         <button>Started</button>
         <button>Completed</button>

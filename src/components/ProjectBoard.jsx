@@ -27,7 +27,12 @@ const ProjectBoard = () => {
       <div className="column">
         <h2>Not started</h2>
         <div className="card-stack">
-          <ProjectCard />
+          {projects.map((project) => {
+            if (project.status === 'not started') {
+              return <ProjectCard key={project.id} project={project} />;
+            }
+            return null;
+          })}
           <button
             onClick={() =>
               setNewProject({
@@ -50,7 +55,12 @@ const ProjectBoard = () => {
       <div className="column">
         <h2>In progress</h2>
         <div className="card-stack">
-          <ProjectCard />
+          {projects.map((project) => {
+            if (project.status === 'in progress') {
+              return <ProjectCard key={project.id} project={project} />;
+            }
+            return null;
+          })}
           <button
             onClick={() =>
               setNewProject({
@@ -73,7 +83,12 @@ const ProjectBoard = () => {
       <div className="column">
         <h2>Completed</h2>
         <div className="card-stack">
-          <ProjectCard />
+          {projects.map((project) => {
+            if (project.status === 'completed') {
+              return <ProjectCard key={project.id} project={project} />;
+            }
+            return null;
+          })}
           <button
             onClick={() =>
               setNewProject({
