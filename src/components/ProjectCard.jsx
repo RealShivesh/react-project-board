@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ projects, setProjects, project }) => {
   const [edit, setEdit] = useState(false);
   const [newTitle, setNewTitle] = useState(project.title);
   const [newStatus, setNewStatus] = useState(project.status);
@@ -27,6 +27,18 @@ const ProjectCard = ({ project }) => {
     project.title = newTitle;
     project.status = newStatus;
     project.description = newDescription;
+    console.log(projects);
+    localStorage.setItem('projects', JSON.stringify([...projects, project]));
+  };
+
+  //deletes the project from the projects array and from localstorage
+  const handleDelete = () => {
+    const newProjects = projects.filter(
+      (projectIn) => projectIn.id !== project.id,
+    );
+    localStorage.setItem('projects', JSON.stringify(newProjects));
+    setProjects(newProjects);
+    console.log(projects);
   };
 
   return (
@@ -37,7 +49,7 @@ const ProjectCard = ({ project }) => {
           <p className="card-text">{project.description}</p>
           <div>
             <button onClick={handleEdit}>Edit</button>
-            <button>Delete</button>
+            <button onClick={handleDelete}>Delete</button>
           </div>
         </div>
       )}

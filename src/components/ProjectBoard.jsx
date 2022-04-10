@@ -29,7 +29,14 @@ const ProjectBoard = () => {
         <div className="card-stack">
           {projects.map((project) => {
             if (project.status === 'not started') {
-              return <ProjectCard key={project.id} project={project} />;
+              return (
+                <ProjectCard
+                  projects={projects}
+                  setProjects={setProjects}
+                  key={project.id}
+                  project={project}
+                />
+              );
             }
             return null;
           })}
@@ -58,7 +65,14 @@ const ProjectBoard = () => {
         <div className="card-stack">
           {projects.map((project) => {
             if (project.status === 'in progress') {
-              return <ProjectCard key={project.id} project={project} />;
+              return (
+                <ProjectCard
+                  projects={projects}
+                  setProjects={setProjects}
+                  key={project.id}
+                  project={project}
+                />
+              );
             }
             return null;
           })}
@@ -87,7 +101,14 @@ const ProjectBoard = () => {
         <div className="card-stack">
           {projects.map((project) => {
             if (project.status === 'completed') {
-              return <ProjectCard key={project.id} project={project} />;
+              return (
+                <ProjectCard
+                  projects={projects}
+                  setProjects={setProjects}
+                  key={project.id}
+                  project={project}
+                />
+              );
             }
             return null;
           })}
