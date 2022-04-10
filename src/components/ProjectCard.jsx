@@ -23,6 +23,7 @@ const ProjectCard = ({ project }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setEdit(!edit);
+    //updates the project details in the projects array
     project.title = newTitle;
     project.status = newStatus;
     project.description = newDescription;
@@ -41,7 +42,7 @@ const ProjectCard = ({ project }) => {
         </div>
       )}
       {edit && (
-        <form onSubmit={handleSubmit}>
+        <form className="edit-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Title</label>
             <input
@@ -50,6 +51,16 @@ const ProjectCard = ({ project }) => {
               id="name"
               name="title"
               value={newTitle}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="description">Description</label>
+            <textarea
+              className="form-control"
+              id="description"
+              name="description"
+              value={newDescription}
               onChange={handleChange}
             />
           </div>
@@ -66,16 +77,6 @@ const ProjectCard = ({ project }) => {
               <option value="in progress">In progress</option>
               <option value="completed">Completed</option>
             </select>
-          </div>
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
-            <textarea
-              className="form-control"
-              id="description"
-              name="description"
-              value={newDescription}
-              onChange={handleChange}
-            />
           </div>
           <button type="submit">Submit</button>
         </form>

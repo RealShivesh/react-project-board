@@ -19,7 +19,7 @@ const NewTask = ({ status, projects, setProjects }) => {
     setProjects([
       ...projects,
       { title, description, status, id: Math.random() },
-    ]);
+    ]); //add the new task to the projects array
     setTitle('');
     setDescription('');
   };
@@ -28,7 +28,7 @@ const NewTask = ({ status, projects, setProjects }) => {
 
   return (
     <>
-      <div>
+      <div className="new-task">
         <h4>New Task</h4>
         <form>
           <div className="form-group">

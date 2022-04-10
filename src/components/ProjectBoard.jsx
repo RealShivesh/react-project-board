@@ -34,6 +34,7 @@ const ProjectBoard = () => {
             return null;
           })}
           <button
+            className="new-project-button"
             onClick={() =>
               setNewProject({
                 ...newProject,
@@ -41,7 +42,7 @@ const ProjectBoard = () => {
               })
             }
           >
-            Add new
+            Add new task
           </button>
           {newProject.notStarted && (
             <NewTask
@@ -62,6 +63,7 @@ const ProjectBoard = () => {
             return null;
           })}
           <button
+            className="new-project-button"
             onClick={() =>
               setNewProject({
                 ...newProject,
@@ -69,7 +71,7 @@ const ProjectBoard = () => {
               })
             }
           >
-            Add new
+            Add new task
           </button>
           {newProject.inProgress && (
             <NewTask
@@ -90,6 +92,7 @@ const ProjectBoard = () => {
             return null;
           })}
           <button
+            className="new-project-button"
             onClick={() =>
               setNewProject({
                 ...newProject,
@@ -97,7 +100,7 @@ const ProjectBoard = () => {
               })
             }
           >
-            Add new
+            Add new task
           </button>
           {newProject.completed && (
             <NewTask
