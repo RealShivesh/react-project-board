@@ -27,6 +27,11 @@ const ProjectCard = ({ projects, setProjects, project }) => {
     project.title = newTitle;
     project.status = newStatus;
     project.description = newDescription;
+    //getting the ID from the projects object, updating the same item to the projects array and then deleting the old item
+    const id = project.id;
+    const index = projects.findIndex((project) => project.id === id);
+    projects.splice(index, 1, project);
+    setProjects(projects);
     console.log(projects);
     localStorage.setItem('projects', JSON.stringify([...projects, project]));
   };
