@@ -33,7 +33,8 @@ const ProjectCard = ({ projects, setProjects, project }) => {
     projects.splice(index, 1, project);
     setProjects(projects);
     console.log(projects);
-    localStorage.setItem('projects', JSON.stringify([...projects, project]));
+    localStorage.setItem('projects', JSON.stringify([...projects]));
+    window.location.reload();
   };
 
   //deletes the project from the projects array and from localstorage
